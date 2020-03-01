@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50C043F2240BA09300DFD85A /* ZHLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C043F1240BA09300DFD85A /* ZHLineChartView.m */; };
+		50C043F5240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */; };
 		50FF2EB72409124600229F65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FF2EB62409124600229F65 /* AppDelegate.m */; };
 		50FF2EBA2409124600229F65 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FF2EB92409124600229F65 /* SceneDelegate.m */; };
 		50FF2EBD2409124600229F65 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FF2EBC2409124600229F65 /* ViewController.m */; };
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50C043F0240BA09300DFD85A /* ZHLineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHLineChartView.h; sourceTree = "<group>"; };
+		50C043F1240BA09300DFD85A /* ZHLineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHLineChartView.m; sourceTree = "<group>"; };
+		50C043F3240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+ThroughPointsBezier.h"; sourceTree = "<group>"; };
+		50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+ThroughPointsBezier.m"; sourceTree = "<group>"; };
 		50FF2EB22409124600229F65 /* ZHLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FF2EB52409124600229F65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		50FF2EB62409124600229F65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +87,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50C043EF240BA07600DFD85A /* ZHLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				50C043F0240BA09300DFD85A /* ZHLineChartView.h */,
+				50C043F1240BA09300DFD85A /* ZHLineChartView.m */,
+				50C043F3240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.h */,
+				50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */,
+			);
+			path = ZHLineChart;
+			sourceTree = "<group>";
+		};
 		50FF2EA92409124600229F65 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +121,7 @@
 		50FF2EB42409124600229F65 /* ZHLineChart */ = {
 			isa = PBXGroup;
 			children = (
+				50C043EF240BA07600DFD85A /* ZHLineChart */,
 				50FF2EB52409124600229F65 /* AppDelegate.h */,
 				50FF2EB62409124600229F65 /* AppDelegate.m */,
 				50FF2EB82409124600229F65 /* SceneDelegate.h */,
@@ -267,10 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C043F2240BA09300DFD85A /* ZHLineChartView.m in Sources */,
 				50FF2EBD2409124600229F65 /* ViewController.m in Sources */,
 				50FF2EB72409124600229F65 /* AppDelegate.m in Sources */,
 				50FF2EC82409124E00229F65 /* main.m in Sources */,
 				50FF2EBA2409124600229F65 /* SceneDelegate.m in Sources */,
+				50C043F5240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = ZHLineChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H6HKVCBR9;
 				INFOPLIST_FILE = ZHLineChart/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
