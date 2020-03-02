@@ -95,7 +95,7 @@
                 bottomLabel.text = self.lables[k];
                 [self addSubview:bottomLabel];
                 //旋转
-                [bottomLabel setAngle:M_PI * 1.75];
+                bottomLabel.transform = CGAffineTransformMakeRotation(self.angle);
                 
                 //构造关键点
                 NSNumber *tempNum = self.dataAry[k];
