@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZHLineChartView : UIView
+
 /** 折线关键点用来显示的数据 */
 @property (nonatomic, strong) NSArray <NSNumber *> *lineDataAry;
 /** 底部横向显示文字 */
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *min;
 /** Y轴分割个数*/
 @property (nonatomic, assign) NSUInteger splitCount;
+
 /** 关键点圆半径（默认3） */
 @property (nonatomic, assign) CGFloat circleRadius;
 /** 折线宽（默认1.5） */
@@ -29,31 +31,37 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat horizontalLineWidth;
 /** 底部横向分割线宽（默认1） */
 @property (nonatomic, assign) CGFloat horizontalBottomLineWidth;
+/** 刻度上下偏移（默认0） */
+@property (nonatomic, assign) CGFloat scaleOffset;
+/** 底部文本上下偏移（默认20） */
+@property (nonatomic, assign) CGFloat bottomOffset;
 /** 底部文本旋转角度（默认M_PI * 1.75） */
 @property (nonatomic, assign) CGFloat angle;
+/** 文本字号（默认10） */
+@property (nonatomic, assign) CGFloat textFontSize;
 
-/** 关键点边框颜色 */
+/** 关键点边框颜色（默认0x428eda） */
 @property (nonatomic, strong) UIColor *circleStrokeColor;
-/** 关键点填充颜色 */
+/** 关键点填充颜色（默认whiteColor） */
 @property (nonatomic, strong) UIColor *circleFillColor;
-/** 纵向横向显示文本颜色 */
+/** 纵向横向显示文本颜色（默认0x666666） */
 @property (nonatomic, strong) UIColor *textColor;
-/** 折线颜色 */
+/** 折线颜色（默认0x428eda） */
 @property (nonatomic, strong) UIColor *lineColor;
-/** 横向分割线颜色 */
+/** 横向分割线颜色（默认0xe8e8e8） */
 @property (nonatomic, strong) UIColor *horizontalLineColor;
-/** 底部横向分割线颜色 */
+/** 底部横向分割线颜色（默认0x428eda） */
 @property (nonatomic, strong) UIColor *horizontalBottomLineColor;
 
 /** 关键点居中显示（默认YES） */
 @property (nonatomic, assign) BOOL toCenter;
-/** toCenter=YES时是否补充前后显示（默认YES） */
+/** toCenter=YES时是否补充前后显示（默认NO） */
 @property (nonatomic, assign) BOOL supplement;
 /** 折线关键点数据是否显示（默认YES） */
 @property (nonatomic, assign) BOOL showLineData;
 /** 是否填充颜色渐变（默认YES） */
 @property (nonatomic, assign) BOOL showColorGradient;
-/** 渐变颜色集合 */
+/** 渐变颜色集合 (默认0.4lineColor+0.1whiteColor)*/
 @property (nonatomic, strong) NSArray *colorArr;
 
 
