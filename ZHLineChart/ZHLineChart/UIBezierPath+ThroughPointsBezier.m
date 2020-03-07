@@ -25,6 +25,20 @@
     return [contractionFactorAssociatedObject floatValue];
 }
 
+/**
+ * 正常折线绘制
+ * 必须将CGPoint结构体包装成NSValue对象并且至少一个点来画折线。
+ */
+- (void)addNormalBezierThroughPoints:(NSArray *)pointArray
+{
+    for (int i = 0; i < pointArray.count; i++) {
+        
+        NSValue * pointIValue = pointArray[i];
+        CGPoint pointI = [pointIValue CGPointValue];
+        [self addLineToPoint:pointI];
+    }
+}
+
 - (void)addBezierThroughPoints:(NSArray *)pointArray
 {
     NSAssert(pointArray.count > 0, @"You must give at least 1 point for drawing the curve.");
