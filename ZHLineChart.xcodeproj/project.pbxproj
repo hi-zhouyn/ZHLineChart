@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50B4CFB324163D070073CCE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B4CFB224163D060073CCE0 /* AppDelegate.m */; };
 		50C043F2240BA09300DFD85A /* ZHLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C043F1240BA09300DFD85A /* ZHLineChartView.m */; };
 		50C043F5240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */; };
-		50FF2EB72409124600229F65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FF2EB62409124600229F65 /* AppDelegate.m */; };
-		50FF2EBA2409124600229F65 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FF2EB92409124600229F65 /* SceneDelegate.m */; };
 		50FF2EBD2409124600229F65 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FF2EBC2409124600229F65 /* ViewController.m */; };
 		50FF2EC02409124600229F65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50FF2EBE2409124600229F65 /* Main.storyboard */; };
 		50FF2EC22409124E00229F65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50FF2EC12409124E00229F65 /* Assets.xcassets */; };
@@ -38,15 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50B4CFB124163D060073CCE0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		50B4CFB224163D060073CCE0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		50C043F0240BA09300DFD85A /* ZHLineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHLineChartView.h; sourceTree = "<group>"; };
 		50C043F1240BA09300DFD85A /* ZHLineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHLineChartView.m; sourceTree = "<group>"; };
 		50C043F3240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+ThroughPointsBezier.h"; sourceTree = "<group>"; };
 		50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+ThroughPointsBezier.m"; sourceTree = "<group>"; };
 		50FF2EB22409124600229F65 /* ZHLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		50FF2EB52409124600229F65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		50FF2EB62409124600229F65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		50FF2EB82409124600229F65 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		50FF2EB92409124600229F65 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		50FF2EBB2409124600229F65 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		50FF2EBC2409124600229F65 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		50FF2EBF2409124600229F65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,10 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				50C043EF240BA07600DFD85A /* ZHLineChart */,
-				50FF2EB52409124600229F65 /* AppDelegate.h */,
-				50FF2EB62409124600229F65 /* AppDelegate.m */,
-				50FF2EB82409124600229F65 /* SceneDelegate.h */,
-				50FF2EB92409124600229F65 /* SceneDelegate.m */,
+				50B4CFB124163D060073CCE0 /* AppDelegate.h */,
+				50B4CFB224163D060073CCE0 /* AppDelegate.m */,
 				50FF2EBB2409124600229F65 /* ViewController.h */,
 				50FF2EBC2409124600229F65 /* ViewController.m */,
 				50FF2EBE2409124600229F65 /* Main.storyboard */,
@@ -287,10 +282,9 @@
 			files = (
 				50C043F2240BA09300DFD85A /* ZHLineChartView.m in Sources */,
 				50FF2EBD2409124600229F65 /* ViewController.m in Sources */,
-				50FF2EB72409124600229F65 /* AppDelegate.m in Sources */,
 				50FF2EC82409124E00229F65 /* main.m in Sources */,
-				50FF2EBA2409124600229F65 /* SceneDelegate.m in Sources */,
 				50C043F5240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m in Sources */,
+				50B4CFB324163D070073CCE0 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
