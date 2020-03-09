@@ -53,9 +53,7 @@
         _lineView.lineDataAry = @[@502, @523, @482, @455, @473, @546];
         _lineView.splitCount = 3;
         _lineView.toCenter = NO;
-//        _lineView.angle = 0;
         _lineView.edge = UIEdgeInsetsMake(25, 15, 50, 25);
-        _lineView.backgroundColor = [UIColor whiteColor];
         [self.scrollView addSubview:_lineView];
     }
     return _lineView;
@@ -71,9 +69,7 @@
         _lineView1.lineDataAry = @[@502, @523, @482, @455, @473, @546];
         _lineView1.splitCount = 3;
         _lineView1.supplement = YES;
-//        _lineView1.angle = 0;
         _lineView1.bottomOffset = 15;
-        _lineView1.backgroundColor = [UIColor whiteColor];
         [self.scrollView addSubview:_lineView1];
     }
     return _lineView1;
@@ -92,10 +88,8 @@
         _lineView2.bottomOffset = 10;
         _lineView2.addCurve = NO;
         _lineView2.edge = UIEdgeInsetsMake(25, 15, 30, 25);
-//        _lineView2.textColor = [UIColor magentaColor];
         _lineView2.lineColor = [UIColor redColor];
         _lineView2.colorArr = [NSArray arrayWithObjects:(id)[[[UIColor redColor] colorWithAlphaComponent:0.4] CGColor],(id)[[[UIColor whiteColor] colorWithAlphaComponent:0.1] CGColor], nil];
-        _lineView2.backgroundColor = [UIColor whiteColor];
         [self.scrollView addSubview:_lineView2];
     }
     return _lineView2;
@@ -111,7 +105,6 @@
         _lineView3.lineDataAry = @[@502, @623, @482, @355, @473, @546];
         _lineView3.splitCount = 2;
         _lineView3.textColor = [UIColor orangeColor];
-//        _lineView3.showColorGradient = NO;
         _lineView3.circleStrokeColor = [UIColor redColor];
         _lineView3.horizontalLineColor = [UIColor redColor];
         _lineView3.horizontalBottomLineColor = [UIColor redColor];
@@ -119,7 +112,6 @@
 //        _lineView3.toCenter = NO;
 //        _lineView.angle = 0;
 //        _lineView3.edge = UIEdgeInsetsMake(25, 15, 50, 25);
-        _lineView3.backgroundColor = [UIColor whiteColor];
         [self.scrollView addSubview:_lineView3];
     }
     return _lineView3;
@@ -138,7 +130,6 @@
         _lineView4.circleStrokeColor = [UIColor orangeColor];
         _lineView4.horizontalBottomLineColor = [UIColor orangeColor];
         _lineView4.edge = UIEdgeInsetsMake(25, 5, 50, 15);
-        _lineView4.backgroundColor = [UIColor whiteColor];
         [self.scrollView addSubview:_lineView4];
     }
     return _lineView4;

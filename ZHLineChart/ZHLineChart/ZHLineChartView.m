@@ -19,6 +19,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        
         self.circleRadius = 3.f;
         self.lineWidth = 1.5f;
         self.horizontalLineWidth = 0.5f;
