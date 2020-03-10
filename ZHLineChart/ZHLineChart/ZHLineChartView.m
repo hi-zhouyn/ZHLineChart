@@ -71,7 +71,11 @@
         leftLabel.textColor = self.textColor;
         leftLabel.textAlignment = NSTextAlignmentRight;
         leftLabel.font = [UIFont systemFontOfSize:self.textFontSize];
-        leftLabel.text = [NSString stringWithFormat:@"%ld",self.max.integerValue - numSpace * i];
+        NSInteger leftNum = self.max.integerValue - numSpace * i;
+        if (i == self.splitCount) {
+            leftNum = self.min.integerValue;
+        }
+        leftLabel.text = [NSString stringWithFormat:@"%ld",leftNum];
         [self addSubview:leftLabel];
         
         if (!i) {
@@ -212,7 +216,7 @@
 }
 
 /**
- * 绘制关键折线及关键点
+ * 绘制关键点及关键点数据展示
  */
 - (void)buildDotWithPointsArr:(NSMutableArray *)pointsArr
 {
