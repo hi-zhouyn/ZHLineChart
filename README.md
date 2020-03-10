@@ -1,5 +1,7 @@
 # ZHLineChart
 ZHLineChart,一款轻便可自定义的折线图。支持风格、内容、颜色、文本、排版等自定义设置，轻便简洁！
+## 详细文章
+更多了解可以查看：[简书文章](https://www.jianshu.com/p/ceda837000f5)
 
 ## 预览
 ![ZHLineChart](/image/line1.png)
