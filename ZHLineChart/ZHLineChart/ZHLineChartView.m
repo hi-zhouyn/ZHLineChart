@@ -51,12 +51,33 @@
     }
     return self;
 }
+- (void)setIsShowHeadTail:(BOOL)isShowHeadTail{
+    _isShowHeadTail = isShowHeadTail;
+}
 
+-(CGFloat)getTextWidth:(NSString*)str fontSize:(CGFloat)fontSize{
+    NSDictionary *attrs = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize]};
+    return [str boundingRectWithSize:CGSizeMake(300, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size.width;
+}
+-(NSString*)getYText{//增加大数处理
+    NSInteger val = [self.max integerValue];
+    if (val<10000) {
+        return [NSString stringWithFormat:@"%ld",[self.max integerValue]];
+    }else if (10000 <= val && val < 1000000){
+        return [NSString stringWithFormat:@"%ldK",[self.max integerValue]/1000];
+    }else{
+        return [NSString stringWithFormat:@"%ldM",[self.max integerValue]/1000000];
+    }
+}
 /**
  * 渲染折线图
  */
 - (void)drawLineChart
 {
+    CGFloat tmpWith = [self getTextWidth:[self getYText] fontSize:self.textFontSize];
+    if (tmpWith > self.leftTextWidth) {
+        self.leftTextWidth = tmpWith;
+    }
     NSMutableArray *pointArr = [NSMutableArray array];
     CGFloat labelHeight = self.textFontSize;
     NSInteger numSpace = (self.max.integerValue - self.min.integerValue) / self.splitCount;
@@ -65,17 +86,18 @@
     CGFloat maxMidY;
     
     for (int i = 0; i < self.splitCount + 1; i ++) {
+        NSInteger leftNum = self.max.integerValue - numSpace * i;
+        NSString * yVal = [NSString stringWithFormat:@"%ld",leftNum];
         //创建纵轴文本
         UILabel *leftLabel = [[UILabel alloc] init];
         leftLabel.frame = CGRectMake(self.edge.left, self.leftTextWidth + (spaceY + labelHeight) * i, self.leftTextWidth, labelHeight);
         leftLabel.textColor = self.textColor;
         leftLabel.textAlignment = NSTextAlignmentRight;
         leftLabel.font = [UIFont systemFontOfSize:self.textFontSize];
-        NSInteger leftNum = self.max.integerValue - numSpace * i;
         if (i == self.splitCount) {
             leftNum = self.min.integerValue;
         }
-        leftLabel.text = [NSString stringWithFormat:@"%ld",leftNum];
+        leftLabel.text = yVal;
         [self addSubview:leftLabel];
         
         if (!i) {
@@ -111,15 +133,29 @@
             CGFloat ratio = (maxMidY - minMidY) / (self.max.floatValue - self.min.floatValue);
             for (int k = 0; k < self.horizontalDataArr.count; k ++) {
                 CGFloat midX = minX + (spaceX * k) + (self.toCenter ? spaceX / 2 : 0);
-                UILabel *bottomLabel = [[UILabel alloc] init];
-                bottomLabel.frame = CGRectMake(midX - bottomLabelWidth / 2, maxMidY + self.bottomOffset, bottomLabelWidth, labelHeight);
-                bottomLabel.textColor = self.textColor;
-                bottomLabel.textAlignment = NSTextAlignmentCenter;
-                bottomLabel.font = [UIFont systemFontOfSize:self.textFontSize];
-                bottomLabel.text = self.horizontalDataArr[k];
-                [self addSubview:bottomLabel];
-                //旋转
-                bottomLabel.transform = CGAffineTransformMakeRotation(self.angle);
+                if (self.isShowHeadTail) {//增加只显示头尾的判断控制
+                    if (k == 0 || k == self.horizontalDataArr.count - 1) {
+                        UILabel *bottomLabel = [[UILabel alloc] init];
+                        bottomLabel.frame = CGRectMake(midX - bottomLabelWidth / 2, maxMidY + self.bottomOffset, bottomLabelWidth, labelHeight);
+                        bottomLabel.textColor = self.textColor;
+                        bottomLabel.textAlignment = NSTextAlignmentCenter;
+                        bottomLabel.font = [UIFont systemFontOfSize:self.textFontSize];
+                        bottomLabel.text = self.horizontalDataArr[k];
+                        [self addSubview:bottomLabel];
+                        //旋转
+                        bottomLabel.transform = CGAffineTransformMakeRotation(self.angle);
+                    }
+                }else{
+                    UILabel *bottomLabel = [[UILabel alloc] init];
+                    bottomLabel.frame = CGRectMake(midX - bottomLabelWidth / 2, maxMidY + self.bottomOffset, bottomLabelWidth, labelHeight);
+                    bottomLabel.textColor = self.textColor;
+                    bottomLabel.textAlignment = NSTextAlignmentCenter;
+                    bottomLabel.font = [UIFont systemFontOfSize:self.textFontSize];
+                    bottomLabel.text = self.horizontalDataArr[k];
+                    [self addSubview:bottomLabel];
+                    //旋转
+                    bottomLabel.transform = CGAffineTransformMakeRotation(self.angle);
+                }
                 
                 //构造关键点
                 NSNumber *tempNum = self.lineDataAry[k];
@@ -239,28 +275,32 @@
         [self.layer addSublayer:circleLayer];
         
         //关键点数据
-        if (self.showLineData) {
-            UILabel *numLabel = [[UILabel alloc] init];
-            numLabel.frame = CGRectMake(point.CGPointValue.x - self.dataTextWidth / 2, point.CGPointValue.y - 18, self.dataTextWidth, self.textFontSize);
-            numLabel.textColor = self.textColor;
-            numLabel.textAlignment = NSTextAlignmentRight;
-            numLabel.font = [UIFont systemFontOfSize:self.textFontSize];
+        CGFloat val = [self.lineDataAry[i] floatValue];
+        if (self.showLineData && val > 0) {
             NSInteger index = i;
             if (self.toCenter && self.supplement) {
                 index = i - 1;
             }
-            numLabel.text = [NSString stringWithFormat:@"%@",self.lineDataAry[index]];
+            NSString * val = [NSString stringWithFormat:@"%@",self.lineDataAry[index]];
+            CGFloat tw = [self getTextWidth:val fontSize:self.textFontSize];
+            if (tw > self.dataTextWidth) {//增加y轴文本宽度自适应
+                self.dataTextWidth = tw;
+            }
+            CGFloat xPoint = point.CGPointValue.x - self.dataTextWidth / 2;
+            if (xPoint + self.dataTextWidth> [UIScreen mainScreen].bounds.size.width) {
+                //增加超出屏幕文本偏移
+                CGFloat delta = xPoint + self.dataTextWidth - [UIScreen mainScreen].bounds.size.width;
+                xPoint -= delta;
+            }
+            UILabel *numLabel = [[UILabel alloc] init];
+            numLabel.frame = CGRectMake(xPoint, point.CGPointValue.y - 18, self.dataTextWidth, self.textFontSize);
+            numLabel.textColor = self.textColor;
+            numLabel.textAlignment = NSTextAlignmentRight;
+            numLabel.font = [UIFont systemFontOfSize:self.textFontSize];
+            numLabel.text = val;
             [self addSubview:numLabel];
         }
     }
 }
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
 
 @end

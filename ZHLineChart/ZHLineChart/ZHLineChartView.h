@@ -35,7 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *min;
 /** Y轴分割个数*/
 @property (nonatomic, assign) NSUInteger splitCount;
-
+/** 是否只显示X轴头尾 , 默认NO,也就是全部显示*/
+@property(nonatomic,assign)BOOL isShowHeadTail;
 /** 关键点圆半径（默认3） */
 @property (nonatomic, assign) CGFloat circleRadius;
 /** 折线宽（默认1.5） */
