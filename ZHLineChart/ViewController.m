@@ -49,6 +49,7 @@
         _lineView = [[ZHLineChartView alloc] initWithFrame:CGRectMake(0, 10, CGRectGetWidth(self.view.frame), 200)];
         _lineView.max = @600;
         _lineView.min = @300;
+        _lineView.isShowHeadTail = YES;
         _lineView.horizontalDataArr = @[@"2020-02", @"2020-03", @"2020-04", @"2020-05", @"2020-06", @"2020-07"];
         _lineView.lineDataAry = @[@502, @523, @482, @455, @473, @546];
         _lineView.splitCount = 3;
