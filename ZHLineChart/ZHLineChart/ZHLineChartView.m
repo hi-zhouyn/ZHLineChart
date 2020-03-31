@@ -8,7 +8,7 @@
 
 #import "ZHLineChartView.h"
 #import "UIBezierPath+ThroughPointsBezier.h"
-
+#import "ZHLineChartCalculator.h"
 @interface ZHLineChartView ()
 @property (nonatomic, strong) NSMutableArray *pointArr;
 @end
@@ -55,18 +55,36 @@
     _isShowHeadTail = isShowHeadTail;
 }
 
--(CGFloat)getTextWidth:(NSString*)str fontSize:(CGFloat)fontSize{
-    NSDictionary *attrs = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize]};
-    return [str boundingRectWithSize:CGSizeMake(300, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size.width;
+//对最大值最小值进行向上向下取整
+- (void)setMax:(NSNumber *)max{
+    CGFloat maxNum = [max doubleValue];
+    int count = 0;
+    while (maxNum>10) {
+        count  ++ ;
+        maxNum /= 10.0;
+    }
+    if ([ZHLineChartCalculator isPureFloat:[NSString stringWithFormat:@"%lf",maxNum]]) {
+        maxNum = ceil(maxNum);
+    }
+    _max = [NSNumber numberWithInteger:maxNum * pow(10,count)];
 }
--(NSString*)getYText{//增加大数处理
-    NSInteger val = [self.max integerValue];
-    if (val<10000) {
-        return [NSString stringWithFormat:@"%ld",[self.max integerValue]];
-    }else if (10000 <= val && val < 1000000){
-        return [NSString stringWithFormat:@"%ldK",[self.max integerValue]/1000];
+
+- (void)setMin:(NSNumber *)min{
+    CGFloat minNum = [min doubleValue];
+    if(minNum ==0){
+        _min = min;
     }else{
-        return [NSString stringWithFormat:@"%ldM",[self.max integerValue]/1000000];
+        int count = 0;
+        while (minNum>10) {
+            count  ++ ;
+            minNum /= 10.0;
+        }
+        if ([ZHLineChartCalculator isPureFloat:[NSString stringWithFormat:@"%lf",minNum]]) {
+            minNum = floor(minNum);
+        }else{
+            minNum --;
+        }
+        _min = [NSNumber numberWithInteger:minNum * pow(10,count)];
     }
 }
 /**
@@ -74,10 +92,6 @@
  */
 - (void)drawLineChart
 {
-    CGFloat tmpWith = [self getTextWidth:[self getYText] fontSize:self.textFontSize];
-    if (tmpWith > self.leftTextWidth) {
-        self.leftTextWidth = tmpWith;
-    }
     NSMutableArray *pointArr = [NSMutableArray array];
     CGFloat labelHeight = self.textFontSize;
     NSInteger numSpace = (self.max.integerValue - self.min.integerValue) / self.splitCount;
@@ -85,19 +99,26 @@
     CGFloat minMidY = 0.f;
     CGFloat maxMidY;
     
+    NSMutableArray * nameArr = [NSMutableArray new];
     for (int i = 0; i < self.splitCount + 1; i ++) {
         NSInteger leftNum = self.max.integerValue - numSpace * i;
         NSString * yVal = [NSString stringWithFormat:@"%ld",leftNum];
+        yVal = [self getYText:yVal];
+        [nameArr addObject:yVal];
+        CGFloat w = [self getTextWidth:yVal fontSize:self.textFontSize];
+        if (w > self.leftTextWidth) {
+            self.leftTextWidth = w;
+        }
+    }
+    for (int i = 0; i < self.splitCount + 1; i ++) {
         //创建纵轴文本
         UILabel *leftLabel = [[UILabel alloc] init];
         leftLabel.frame = CGRectMake(self.edge.left, self.leftTextWidth + (spaceY + labelHeight) * i, self.leftTextWidth, labelHeight);
         leftLabel.textColor = self.textColor;
         leftLabel.textAlignment = NSTextAlignmentRight;
         leftLabel.font = [UIFont systemFontOfSize:self.textFontSize];
-        if (i == self.splitCount) {
-            leftNum = self.min.integerValue;
-        }
-        leftLabel.text = yVal;
+        
+        leftLabel.text = nameArr[i];
         [self addSubview:leftLabel];
         
         if (!i) {
@@ -302,5 +323,18 @@
         }
     }
 }
-
+-(CGFloat)getTextWidth:(NSString*)str fontSize:(CGFloat)fontSize{
+    NSDictionary *attrs = @{NSFontAttributeName : [UIFont systemFontOfSize:fontSize]};
+    return [str boundingRectWithSize:CGSizeMake(300, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size.width;
+}
+-(NSString*)getYText:(NSString *)str{//增加大数处理
+    NSInteger val = [str integerValue];
+    if (val<10000) {
+        return [NSString stringWithFormat:@"%ld",val];
+    }else if (10000 <= val && val < 1000000){
+        return [NSString stringWithFormat:@"%ldK",val/1000];
+    }else{
+        return [NSString stringWithFormat:@"%ldM",val/1000000];
+    }
+}
 @end

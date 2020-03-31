@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1263FEB12432E04C00F768DA /* ZHLineChartCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1263FEB02432E04B00F768DA /* ZHLineChartCalculator.m */; };
 		50B4CFB324163D070073CCE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B4CFB224163D060073CCE0 /* AppDelegate.m */; };
 		50C043F2240BA09300DFD85A /* ZHLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C043F1240BA09300DFD85A /* ZHLineChartView.m */; };
 		50C043F5240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1263FEAF2432E04B00F768DA /* ZHLineChartCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHLineChartCalculator.h; sourceTree = "<group>"; };
+		1263FEB02432E04B00F768DA /* ZHLineChartCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHLineChartCalculator.m; sourceTree = "<group>"; };
 		50B4CFB124163D060073CCE0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		50B4CFB224163D060073CCE0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		50C043F0240BA09300DFD85A /* ZHLineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHLineChartView.h; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 			children = (
 				50C043F0240BA09300DFD85A /* ZHLineChartView.h */,
 				50C043F1240BA09300DFD85A /* ZHLineChartView.m */,
+				1263FEAF2432E04B00F768DA /* ZHLineChartCalculator.h */,
+				1263FEB02432E04B00F768DA /* ZHLineChartCalculator.m */,
 				50C043F3240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.h */,
 				50C043F4240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m */,
 			);
@@ -282,6 +287,7 @@
 			files = (
 				50C043F2240BA09300DFD85A /* ZHLineChartView.m in Sources */,
 				50FF2EBD2409124600229F65 /* ViewController.m in Sources */,
+				1263FEB12432E04C00F768DA /* ZHLineChartCalculator.m in Sources */,
 				50FF2EC82409124E00229F65 /* main.m in Sources */,
 				50C043F5240BB19800DFD85A /* UIBezierPath+ThroughPointsBezier.m in Sources */,
 				50B4CFB324163D070073CCE0 /* AppDelegate.m in Sources */,
