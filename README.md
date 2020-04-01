@@ -36,4 +36,4 @@ ZHLineChart,一款轻便可自定义的折线图。支持风格、内容、颜�
 ## 意见建议
 如果感觉此项目对你有帮助，欢迎Star！如果使用过程中遇到问题或者有更好的建议,欢迎在Issues提出！
 ## 更新记录
-* 2020-04-01  文件合并，部分细节调整，文本宽度计算完善（感谢[@vitasapple](https://github.com/vitasapple)支持）
+* 2020-04-01  文件合并，部分细节调整,增加底部横轴文本只显示首尾控制，文本宽度计算完善（感谢[@vitasapple](https://github.com/vitasapple)支持）
