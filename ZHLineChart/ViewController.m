@@ -16,6 +16,7 @@
 @property (nonatomic, strong) ZHLineChartView *lineView2;
 @property (nonatomic, strong) ZHLineChartView *lineView3;
 @property (nonatomic, strong) ZHLineChartView *lineView4;
+@property (nonatomic, strong) ZHLineChartView *lineView5;
 @end
 
 @implementation ViewController
@@ -29,6 +30,7 @@
     [self.lineView2 drawLineChart];
     [self.lineView3 drawLineChart];
     [self.lineView4 drawLineChart];
+    [self.lineView5 drawLineChart];
 }
 
 
@@ -36,8 +38,8 @@
 {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-        _scrollView.backgroundColor = [UIColor lightGrayColor];
-        _scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 1100);
+        _scrollView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
+        _scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), 1300);
         [self.view addSubview:_scrollView];
     }
     return _scrollView;
@@ -47,10 +49,10 @@
 {
     if (!_lineView) {
         _lineView = [[ZHLineChartView alloc] initWithFrame:CGRectMake(0, 10, CGRectGetWidth(self.view.frame), 200)];
-        _lineView.max = @600;
+        _lineView.max = @600.1111;
         _lineView.min = @300;
         _lineView.horizontalDataArr = @[@"2020-02", @"2020-03", @"2020-04", @"2020-05", @"2020-06", @"2020-07"];
-        _lineView.lineDataAry = @[@502, @523, @482, @455, @473, @546];
+        _lineView.lineDataAry = @[@432, @523, @482, @355, @473, @546];
         _lineView.splitCount = 3;
         _lineView.toCenter = NO;
         _lineView.edge = UIEdgeInsetsMake(25, 15, 50, 25);
@@ -109,9 +111,6 @@
         _lineView3.horizontalLineColor = [UIColor redColor];
         _lineView3.horizontalBottomLineColor = [UIColor redColor];
         _lineView3.colorArr = [NSArray arrayWithObjects:(id)[[[UIColor redColor] colorWithAlphaComponent:0.4] CGColor],(id)[[[UIColor whiteColor] colorWithAlphaComponent:0.1] CGColor], nil];
-//        _lineView3.toCenter = NO;
-//        _lineView.angle = 0;
-//        _lineView3.edge = UIEdgeInsetsMake(25, 15, 50, 25);
         [self.scrollView addSubview:_lineView3];
     }
     return _lineView3;
@@ -127,12 +126,29 @@
         _lineView4.lineDataAry = @[@502, @623, @482, @555, @473, @546];
         _lineView4.splitCount = 2;
         _lineView4.showColorGradient = NO;
+        _lineView4.dataTextColor = [UIColor redColor];
         _lineView4.circleStrokeColor = [UIColor orangeColor];
         _lineView4.horizontalBottomLineColor = [UIColor orangeColor];
         _lineView4.edge = UIEdgeInsetsMake(25, 5, 50, 15);
         [self.scrollView addSubview:_lineView4];
     }
     return _lineView4;
+}
+
+- (ZHLineChartView *)lineView5
+{
+    if (!_lineView5) {
+        _lineView5 = [[ZHLineChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.lineView4.frame) + 10, CGRectGetWidth(self.view.frame), 200)];
+        _lineView5.max = @600;
+        _lineView5.min = @300;
+        _lineView5.horizontalDataArr = @[@"2020-02", @"2020-03", @"2020-04", @"2020-05", @"2020-06", @"2020-07"];
+        _lineView5.lineDataAry = @[@422, @523, @482, @555, @373, @446];
+        _lineView5.splitCount = 3;
+        _lineView5.isShowHeadTail = YES;
+        _lineView5.edge = UIEdgeInsetsMake(25, 15, 50, 25);
+        [self.scrollView addSubview:_lineView5];
+    }
+    return _lineView5;
 }
 
 @end

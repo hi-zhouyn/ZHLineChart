@@ -44,9 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat horizontalLineWidth;
 /** 底部横向分割线宽（默认1） */
 @property (nonatomic, assign) CGFloat horizontalBottomLineWidth;
-/** 关键点数据文本显示宽度（默认20） */
+/** 关键点数据文本显示宽度（默认为文本值的宽） */
 @property (nonatomic, assign) CGFloat dataTextWidth;
-/** 纵轴文本显示宽度（默认25） */
+/** 纵轴文本显示宽度（默认为传入最大值max的宽） */
 @property (nonatomic, assign) CGFloat leftTextWidth;
 /** 刻度上下偏移（默认0） */
 @property (nonatomic, assign) CGFloat scaleOffset;
@@ -67,6 +67,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *circleFillColor;
 /** 纵向横向显示文本颜色（默认0x666666） */
 @property (nonatomic, strong) UIColor *textColor;
+/** 关键点文本颜色（默认0x428eda） */
+@property (nonatomic, strong) UIColor *dataTextColor;
 /** 折线颜色（默认0x428eda） */
 @property (nonatomic, strong) UIColor *lineColor;
 /** 横向分割线颜色（默认0xe8e8e8） */
@@ -74,6 +76,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** 底部横向分割线颜色（默认0x428eda） */
 @property (nonatomic, strong) UIColor *horizontalBottomLineColor;
 
+/** 是否只显示X轴头尾,无需显示的文本赋空值可达到同样效果（默认NO,也就是全部显示）(by vitasapple)*/
+@property (nonatomic, assign) BOOL isShowHeadTail;
 /** 贝塞尔曲线绘制，增加曲度控制（默认YES） */
 @property (nonatomic, assign) BOOL addCurve;
 /** 关键点居中显示（默认YES） */
@@ -87,11 +91,34 @@ NS_ASSUME_NONNULL_BEGIN
 /** 渐变颜色集合 (默认0.4 0x428eda + 0.1 whiteColor)*/
 @property (nonatomic, strong) NSArray *colorArr;
 
-
 /**
  * 渲染折线图(传参后调用才会生效)
  */
 - (void)drawLineChart;
+
 @end
+
+
+@interface UIBezierPath (ThroughPointsBezier)
+
+/**
+ *  曲线的弯曲水平。优值区间约为0.6 ~ 0.8。默认值和推荐值是0.7。
+ */
+@property (nonatomic) CGFloat contractionFactor;
+
+/**
+ * 正常折线绘制
+ * 必须将CGPoint结构体包装成NSValue对象并且至少一个点来画折线。
+ */
+- (void)addNormalBezierThroughPoints:(NSArray *)pointArray;
+
+/**
+ * 三次贝塞尔曲线绘制折线
+ * 必须将CGPoint结构体包装成NSValue对象并且至少一个点来画曲线。
+ */
+- (void)addBezierThroughPoints:(NSArray *)pointArray;
+
+@end
+
 
 NS_ASSUME_NONNULL_END
